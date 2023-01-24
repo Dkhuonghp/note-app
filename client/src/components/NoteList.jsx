@@ -6,8 +6,7 @@ import { NoteAddOutlined } from '@mui/icons-material'
 import moment from 'moment'
 
 import SwipeToDelete from 'react-swipe-to-delete-ios'
-// Import styles of the react-swipe-to-delete-component
-import 'react-swipe-to-delete-component/dist/swipe-to-delete.css';
+
 import DeleteFolder from './DeleteFolder'
 
 export default function NoteList() {
@@ -96,7 +95,6 @@ export default function NoteList() {
                                             }
                                         }}                                
                                     >
-
                                         <Card sx={{
                                             mb: '5px',
                                             backgroundColor: id === activeNoteId ? 'rgb(255 211 140)' : null,
