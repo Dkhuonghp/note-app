@@ -6,7 +6,6 @@ import NewFolder from './NewFolder'
 import SwipeToDelete from 'react-swipe-to-delete-ios'
 import DeleteFolder from './DeleteFolder'
 import ReactSearchBox from "react-search-box";
-import { Search } from '@mui/icons-material'
 
 export default function FolderList({folders}) {
     const typoStyle = {
@@ -45,24 +44,13 @@ export default function FolderList({folders}) {
             </Box>
         }
         >   
-            {/* <ReactSearchBox
-                placeholder="Search"
+
+            <ReactSearchBox
+                placeholder="Search Folder"
                 value="Doe"
                 callback={(record) => console.log(record)}
-            /> */}
-                <DialogContent>
-                    <TextField
-                        autoFocus
-                        id='name'
-                        label='Search Folder'
-                        fullWidth
-                        size='small'
-                        variant='standard'
-                        sx={{width: '400px'}}
-                        autoComplete='off'
-                    />
-
-                </DialogContent>
+            />
+                    
 
             {
                 folders.map(({id, name}) => {

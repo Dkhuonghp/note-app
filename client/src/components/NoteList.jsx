@@ -4,7 +4,7 @@ import { Link, Outlet, useParams, useLoaderData, useSubmit, useNavigate} from 'r
 import { Box } from '@mui/system'
 import { NoteAddOutlined } from '@mui/icons-material'
 import moment from 'moment'
-
+import ReactSearchBox from "react-search-box";
 import SwipeToDelete from 'react-swipe-to-delete-ios'
 
 import DeleteFolder from './DeleteFolder'
@@ -64,19 +64,11 @@ export default function NoteList() {
                         </Box>
                     }
                 >
-                    <DialogContent>
-                        <TextField
-                            autoFocus
-                            id='name'
-                            label='Search Note'
-                            fullWidth
-                            size='small'
-                            variant='standard'
-                            sx={{width: '400px'}}
-                            autoComplete='off'
-                        />
-
-                    </DialogContent>
+                    <ReactSearchBox
+                        placeholder="Search Note"
+                        value="Doe"
+                        callback={(record) => console.log(record)}
+                    />
                     {folder.notes.map(({id, content, updatedAt}) => {
                             return (
                                 <Link
