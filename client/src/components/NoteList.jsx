@@ -5,6 +5,11 @@ import { Box } from '@mui/system'
 import { NoteAddOutlined } from '@mui/icons-material'
 import moment from 'moment'
 
+import SwipeToDelete from 'react-swipe-to-delete-ios'
+// Import styles of the react-swipe-to-delete-component
+import 'react-swipe-to-delete-component/dist/swipe-to-delete.css';
+import DeleteFolder from './DeleteFolder'
+
 export default function NoteList() {
     const { noteId, folderId } = useParams()
     const [activeNoteId, setActiveNoteId] = useState(noteId)
@@ -61,26 +66,52 @@ export default function NoteList() {
                     }
                 >
                     {folder.notes.map(({id, content, updatedAt}) => {
-                            return ( 
+                            return (
                                 <Link
                                     key={id}
                                     to={`note/${id}`}
                                     style={{textDecoration: 'none'}}
                                     onClick={() => setActiveNoteId(id)}
                                 >
-                                    <Card sx={{
-                                        mb: '5px',
-                                        backgroundColor: id === activeNoteId ? 'rgb(255 211 140)' : null
-                                    }}>
-                                        <CardContent sx={{'&:last-child': {pb: '10px'}, padding: '10px'}}>
-                                            <div style={{frontSize: 14, fontWeight: 'bold'}}
-                                            dangerouslySetInnerHTML={{__html: `${content.substring(0, 30) || 'Empty'}`}}
-                                            />
-                                            <Typography sx={{fontSize: '10px', color: 'gray'}}>
-                                                {moment(updatedAt).format('MMMM Do YYYY, h:mm:ss a')}
-                                            </Typography>
-                                        </CardContent>
-                                    </Card>
+                                    <SwipeToDelete
+                                        // optional
+                                        height={50} // default
+                                        transitionDuration={250} // default
+                                        deleteWidth={75} // default
+                                        deleteThreshold={75} // default
+                                        showDeleteAction={true} //default
+                                        deleteColor="rgba(252, 58, 48, 1.00)" // default
+                                        deleteComponent={<DeleteFolder/>}
+                                        disabled={false} // default
+                                        id="swiper-1" // not default
+                                        className="my-swiper" // not default
+                                        rtl={false} // default
+                                        onDeleteConfirm={(onSuccess, onCancel) => {
+                                            // not default - default is null
+                                            if (window.confirm("Do you really want to delete this item ?")) {
+                                                onSuccess();
+                                            console.log('Delete');
+                                            } else {
+                                                onCancel();
+                                            }
+                                        }}                                
+                                    >
+
+                                        <Card sx={{
+                                            mb: '5px',
+                                            backgroundColor: id === activeNoteId ? 'rgb(255 211 140)' : null,
+                                            height: 50
+                                        }}>
+                                            <CardContent sx={{'&:last-child': {pb: '10px'}, padding: '10px'}}>
+                                                <div style={{frontSize: 14, fontWeight: 'bold'}}
+                                                dangerouslySetInnerHTML={{__html: `${content.substring(0, 30) || 'Empty'}`}}
+                                                />
+                                                <Typography sx={{fontSize: '10px', color: 'gray'}}>
+                                                    {moment(updatedAt).format('MMMM Do YYYY, h:mm:ss a')}
+                                                </Typography>
+                                            </CardContent>
+                                        </Card>
+                                    </SwipeToDelete>
                                 </Link>
                             )
                         })

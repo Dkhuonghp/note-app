@@ -6,3 +6,7 @@
 #root {
   width: 100%;
 }
+.my-swiper {
+  margin: 4px 0;
+  border-radius: 4px;
+}
