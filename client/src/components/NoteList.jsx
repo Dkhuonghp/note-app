@@ -1,4 +1,4 @@
-import { Grid, List, Card, CardContent, Typography, Tooltip, IconButton } from '@mui/material'
+import { Grid, List, Card, CardContent, Typography, Tooltip, IconButton, DialogContent, TextField } from '@mui/material'
 import React, {useEffect, useState} from 'react'
 import { Link, Outlet, useParams, useLoaderData, useSubmit, useNavigate} from 'react-router-dom'
 import { Box } from '@mui/system'
@@ -64,6 +64,19 @@ export default function NoteList() {
                         </Box>
                     }
                 >
+                    <DialogContent>
+                        <TextField
+                            autoFocus
+                            id='name'
+                            label='Search Note'
+                            fullWidth
+                            size='small'
+                            variant='standard'
+                            sx={{width: '400px'}}
+                            autoComplete='off'
+                        />
+
+                    </DialogContent>
                     {folder.notes.map(({id, content, updatedAt}) => {
                             return (
                                 <Link
