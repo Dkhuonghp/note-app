@@ -14,6 +14,7 @@
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.4",
+    "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
     "firebase": "^9.15.0",
     "graphql-ws": "^5.11.2",

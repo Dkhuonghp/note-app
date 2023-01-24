@@ -62,12 +62,8 @@
 // }
 
 import React, { useEffect, useMemo, useState } from 'react';
-import {
-  ContentState,
-  convertFromHTML,
-  convertToRaw,
-  EditorState,
-} from 'draft-js';
+import { ContentState, convertFromHTML, convertToRaw, EditorState } from 'draft-js';
+
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import { useLoaderData, useSubmit, useLocation } from 'react-router-dom';
